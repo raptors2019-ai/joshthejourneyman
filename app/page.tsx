@@ -94,7 +94,7 @@ export default async function Home() {
               asChild
             >
               <a
-                href="https://github.com/pleasehelpm32"
+                href="https://github.com/raptors2019-ai"
                 target="_blank"
                 aria-label="My GitHub"
               >
