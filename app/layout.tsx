@@ -5,6 +5,7 @@ import "./globals.css";
 
 import Navbar from "@/components/nonui/Navbar";
 import Footer from "@/components/nonui/Footer";
+import { AnalyticsProvider } from "@/components/nonui/AnalyticsProvider";
 
 // Load fonts (unchanged)
 const geistSans = Geist({
@@ -53,9 +54,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <AnalyticsProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </AnalyticsProvider>
       </body>
     </html>
   );
