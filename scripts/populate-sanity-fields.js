@@ -47,6 +47,21 @@ const myIslamRAGUpdate = {
   ],
 };
 
+// Data for Math Tutor
+const mathTutorUpdate = {
+  problem:
+    "How do you scale effective one-on-one tutoring that diagnoses individual student needs and adapts to their learning pace?",
+  hypothesis:
+    "Combining mastery gates (90% threshold), error tagging (categorize mistakes), and AI-generated personalized feedback would create a system that replicates tutor-like adaptivity.",
+  learnings: [
+    "Error tagging is product architecture—categorizing mistakes enables personalized feedback and reveals curriculum patterns.",
+    "10-question sessions hit the flow state sweet spot: long enough for valid mastery measurement, short enough for engagement.",
+    "Mastery gates create accountability for learning—they force evidence-based progression instead of rushing through content.",
+    "Product logic matters more than model power—constrained AI with error diagnosis is more useful than open-ended prompts.",
+    "The most powerful edtech combines explicit product logic (gates, tagging) with AI used strategically (explaining, diagnosing).",
+  ],
+};
+
 async function updatePosts() {
   try {
     // First, fetch the document IDs by slug
@@ -58,6 +73,9 @@ async function updatePosts() {
     const islamPost = await client.fetch(
       "*[_type == 'post' && slug.current == 'building-a-reliable-islamic-ai-how-rag-solves-llm-hallucinations-with-hadith-data'][0] {_id}"
     );
+    const mathPost = await client.fetch(
+      "*[_type == 'post' && slug.current == 'ai-math-tutor-adaptive-learning'][0] {_id}"
+    );
 
     if (!chessPost) {
       console.error("❌ ChessTutor post not found");
@@ -67,8 +85,12 @@ async function updatePosts() {
       console.error("❌ MyIslamRAG post not found");
       process.exit(1);
     }
+    if (!mathPost) {
+      console.error("❌ Math Tutor post not found");
+      process.exit(1);
+    }
 
-    console.log("✅ Found both posts\n");
+    console.log("✅ Found all three posts\n");
 
     // Update ChessTutor
     console.log("🔄 Updating ChessTutor post...");
@@ -88,7 +110,16 @@ async function updatePosts() {
 
     console.log("✅ MyIslamRAG updated:", islamUpdate._id);
 
-    console.log("\n🎉 All posts updated successfully!");
+    // Update Math Tutor
+    console.log("\n🔄 Updating Math Tutor post...");
+    const mathUpdate = await client
+      .patch(mathPost._id)
+      .set(mathTutorUpdate)
+      .commit();
+
+    console.log("✅ Math Tutor updated:", mathUpdate._id);
+
+    console.log("\n🎉 All three posts updated successfully!");
     process.exit(0);
   } catch (error) {
     console.error("❌ Error updating posts:", error.message);
