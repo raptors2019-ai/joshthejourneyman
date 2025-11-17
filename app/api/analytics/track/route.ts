@@ -21,7 +21,7 @@ async function getAnalytics(): Promise<Analytics> {
   try {
     const data = await fs.readFile(ANALYTICS_FILE, 'utf-8');
     return JSON.parse(data);
-  } catch (error) {
+  } catch {
     return {
       users: {},
       totalSessions: 0,
