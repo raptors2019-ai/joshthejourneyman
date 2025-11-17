@@ -14,6 +14,9 @@ interface Post {
   description: PortableTextBlock[];
   videoUrl?: string;
   techStack?: string[];
+  problem?: string;
+  hypothesis?: string;
+  learnings?: string[];
   thumbnail?: {
     asset: {
       _ref: string;
@@ -32,6 +35,9 @@ async function getPost(slug: string): Promise<Post | null> {
     description,
     videoUrl,
     techStack,
+    problem,
+    hypothesis,
+    learnings,
     thumbnail,
     slug // Ensure slug is fetched if needed for other parts of the post object
   }`;

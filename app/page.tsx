@@ -48,11 +48,10 @@ export default async function Home() {
             <TypingEffect /> {/* Stacks on mobile, inline on md+ */}
           </div>
           <p className="text-lg mb-6 max-w-2xl mx-auto text-gray-600">
-            A developer leveraging AI to build interactive web apps with
-            TypeScript, Next.js, React, Tailwind and more. With a background in
-            front-end development, I&apos;ve built projects ranging from dynamic
-            portfolios to AI-integrated apps. Passionate about clean code and
-            user experience.
+            A business analyst transitioning to Product Manager. I build AI-powered
+            products and learn through shipping—testing hypotheses, gathering user
+            feedback, and understanding what&apos;s actually possible with LLMs,
+            agents, and RAG. I bridge strategy and execution.
           </p>
         </div>
       </section>
@@ -61,7 +60,7 @@ export default async function Home() {
       <section className="py-12">
         <div className="container mx-auto px-4 max-w-7xl">
           <h2 className="text-3xl font-bold mb-8 text-center text-blue-700">
-            My Projects
+            AI Product Experiments
           </h2>
           <Suspense fallback={<ProjectsSkeleton />}>
             <ProjectGrid posts={posts} />
@@ -73,10 +72,10 @@ export default async function Home() {
       <section className="py-12 bg-blue-50">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6 text-blue-700">
-            Get in Touch
+            Let&apos;s Talk About Products
           </h2>
           <p className="mb-6 text-gray-600">
-            Interested in collaborating or hiring? Reach out!
+            Interested in discussing PM roles, AI products, or product strategy? I&apos;d love to connect.
           </p>
           <div className="flex justify-center gap-4">
             <Button

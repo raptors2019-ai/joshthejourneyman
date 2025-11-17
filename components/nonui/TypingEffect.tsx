@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 
 const words = [
-  "code.",
-  "create.",
-  "build.",
-  "innovate.",
-  "develop.",
-  "design.",
+  "experiment.",
+  "validate.",
+  "ship.",
+  "iterate.",
+  "discover.",
+  "solve.",
 ];
 
 export default function TypingEffect() {
@@ -51,7 +51,7 @@ export default function TypingEffect() {
 
   return (
     <h1 className="text-4xl font-bold text-blue-700 inline-block">
-      I love to{" "}
+      I{" "}
       <span className="border-r-2 border-blue-700 animate-blink">{text}</span>
     </h1>
   );

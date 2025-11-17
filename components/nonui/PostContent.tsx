@@ -18,6 +18,9 @@ interface Post {
   description: PortableTextBlock[];
   videoUrl?: string;
   techStack?: string[];
+  problem?: string;
+  hypothesis?: string;
+  learnings?: string[];
   thumbnail?: {
     asset: {
       _ref: string;
@@ -175,7 +178,54 @@ export default function PostContent({ post }: { post: Post }) {
               </div>
             </CardContent>
           </div>
-          <div className="lg:col-span-1 p-4 lg:p-0">{/* Empty sidebar */}</div>
+          <div className="lg:col-span-1 p-4 lg:p-0">
+            {/* PM Insights Sidebar */}
+            <div className="space-y-6">
+              {post.problem && (
+                <Card className="bg-blue-50 border-blue-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg text-blue-700 flex items-center gap-2">
+                      <span>🔍</span> The Problem
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-700">{post.problem}</p>
+                  </CardContent>
+                </Card>
+              )}
+              {post.hypothesis && (
+                <Card className="bg-blue-50 border-blue-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg text-blue-700 flex items-center gap-2">
+                      <span>💡</span> Hypothesis
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-700">{post.hypothesis}</p>
+                  </CardContent>
+                </Card>
+              )}
+              {post.learnings && post.learnings.length > 0 && (
+                <Card className="bg-blue-50 border-blue-200">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg text-blue-700 flex items-center gap-2">
+                      <span>📚</span> Key Learnings
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2">
+                      {post.learnings.map((learning, idx) => (
+                        <li key={idx} className="text-sm text-gray-700 flex gap-2">
+                          <span className="text-blue-700 font-bold">•</span>
+                          <span>{learning}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+          </div>
         </div>
       </Card>
     </motion.div>
