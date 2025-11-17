@@ -24,6 +24,7 @@ interface Post {
   description?: PortableTextBlock[];
   videoUrl?: string;
   techStack?: string[];
+  featured?: boolean;
   thumbnail?: {
     asset: { _ref: string };
     alt?: string;
@@ -48,7 +49,7 @@ export default function ProjectGrid({ posts }: { posts: Post[] }) {
             aria-label={`Read more about ${post.title}`}
           >
             <Card className="overflow-hidden shadow-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 hover:scale-105 cursor-pointer border-blue-200 border-2 group relative p-2">
-              {index === 0 && (
+              {post.featured && (
                 <Badge className="absolute top-2 right-2 bg-blue-700 text-white">
                   Featured
                 </Badge>
