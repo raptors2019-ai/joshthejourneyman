@@ -10,15 +10,16 @@ import ProjectGrid from "@/components/nonui/ProjectGrid";
 
 import TypingEffect from "@/components/nonui/TypingEffect";
 
-// Updated query (unchanged)
+// Updated query to include featured field and sort by featured status
 async function getPosts() {
-  const query = `*[_type == "post"] {
+  const query = `*[_type == "post"] | order(featured desc) {
     title,
     slug,
     summary,
     description,
     videoUrl,
     techStack,
+    featured,
     thumbnail
   }`;
   return client.fetch(query);
